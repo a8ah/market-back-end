@@ -11,7 +11,6 @@ export class BrandController {
    */
   @Post()
   async createBrand(@Body() dto: CreateBrandDto): Promise<any> {
-    console.log('DTO', dto);
     return this.brandService.createBrand(dto);
   }
 

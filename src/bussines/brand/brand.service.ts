@@ -18,6 +18,9 @@ export class BrandService {
         data: {
           name: dto.name,
           description: dto.description,
+          product: {
+            connect: { id: dto.product },
+          },
         },
       });
       return {

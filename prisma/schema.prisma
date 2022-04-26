@@ -10,17 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Brand {
-  id String @id @default(uuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  name String @unique
-  description String?
-
-  products Product[]
-  @@map("brands")
-}
-
 model Category{
     id String @id @default(uuid())
     createdAt DateTime @default(now())
@@ -43,6 +32,30 @@ model Product{
     categoryId String
     category Category @relation(fields: [categoryId],references: [id])
     @@map("products")
-
-    
 }
+
+model Brand {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name String @unique
+  description String?
+
+  productId String
+  product Product @relation(fields: [productId],references: [id])
+
+  productsBrands ProductBrandHistory[]
+
+  @@map("brands")
+}
+
+model ProductBrandHistory {
+  id String @id @default(uuid())
+  amount        Int
+  brandId       String
+  brand         Brand       @relation(fields: [brandId], references: [id])
+
+  assignedAt    DateTime @default(now())
+  
+}
+

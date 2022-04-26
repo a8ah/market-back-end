@@ -28,7 +28,7 @@ export class CategoryService {
     } catch (error) {
       if (error instanceof PrismaClientKnownRequestError) {
         if (error.code === 'P2002') {
-          throw new ForbiddenException('Band name already exist');
+          throw new ForbiddenException('Category name already exist');
         }
       }
       throw error;
