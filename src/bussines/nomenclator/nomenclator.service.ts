@@ -20,4 +20,12 @@ export class NomenclatorService {
       },
     });
   }
+
+  listBrandsByProduct(productId: string) {
+    return this.prisma.brand.findMany({
+      where: {
+        productId: productId,
+      },
+    });
+  }
 }

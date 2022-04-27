@@ -16,13 +16,17 @@ export class InventoryController {
   }
 
   @Get()
-  obteinProducts(@Body() dto: InventoryDto) {
-    // console.log({
-    //   category: category,
-    //   brand: brand,
-    //   product: product,
-    // });
+  obteinProducts(
+    @Query('category') category?: string,
+    @Query('brand') brand?: string,
+    @Query('product') product?: string,
+  ) {
+    console.log({
+      category: category,
+      brand: brand,
+      product: product,
+    });
 
-    return this.inventoryService.obteinInventory(dto);
+    return this.inventoryService.obteinInventory(category, product, brand);
   }
 }

@@ -40,20 +40,20 @@ export class InventoryService {
    * @param categoryId
    * @returns
    */
-  async obteinInventory(dto: InventoryDto) {
+  async obteinInventory(category?: string, product?: string, brand?: string) {
     const result = await this.prisma.productBrandHistory.groupBy({
       by: ['assignedAt'],
       where: {
         brandId: {
-          contains: dto.brand,
+          contains: brand,
         },
         brand: {
           productId: {
-            contains: dto.product,
+            contains: product,
           },
           product: {
             categoryId: {
-              contains: dto.category,
+              contains: category,
             },
           },
         },
