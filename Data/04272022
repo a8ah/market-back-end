@@ -1,0 +1,303 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 12.4 (Debian 12.4-1.pgdg100+1)
+-- Dumped by pg_dump version 12.2 (Ubuntu 12.2-4)
+
+-- Started on 2022-04-27 05:08:31 EDT
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 206 (class 1259 OID 18080)
+-- Name: ProductBrandHistory; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."ProductBrandHistory" (
+    id text NOT NULL,
+    "brandId" text NOT NULL,
+    "assignedAt" timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    amount integer NOT NULL
+);
+
+
+ALTER TABLE public."ProductBrandHistory" OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 18041)
+-- Name: _prisma_migrations; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public._prisma_migrations (
+    id character varying(36) NOT NULL,
+    checksum character varying(64) NOT NULL,
+    finished_at timestamp with time zone,
+    migration_name character varying(255) NOT NULL,
+    logs text,
+    rolled_back_at timestamp with time zone,
+    started_at timestamp with time zone DEFAULT now() NOT NULL,
+    applied_steps_count integer DEFAULT 0 NOT NULL
+);
+
+
+ALTER TABLE public._prisma_migrations OWNER TO postgres;
+
+--
+-- TOC entry 205 (class 1259 OID 18071)
+-- Name: brands; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.brands (
+    id text NOT NULL,
+    "createdAt" timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    "updatedAt" timestamp(3) without time zone NOT NULL,
+    name text NOT NULL,
+    description text,
+    "productId" text NOT NULL
+);
+
+
+ALTER TABLE public.brands OWNER TO postgres;
+
+--
+-- TOC entry 203 (class 1259 OID 18053)
+-- Name: categories; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.categories (
+    id text NOT NULL,
+    "createdAt" timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    "updatedAt" timestamp(3) without time zone NOT NULL,
+    name text NOT NULL,
+    description text
+);
+
+
+ALTER TABLE public.categories OWNER TO postgres;
+
+--
+-- TOC entry 204 (class 1259 OID 18062)
+-- Name: products; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.products (
+    id text NOT NULL,
+    "createdAt" timestamp(3) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    "updatedAt" timestamp(3) without time zone NOT NULL,
+    name text NOT NULL,
+    description text,
+    "categoryId" text NOT NULL
+);
+
+
+ALTER TABLE public.products OWNER TO postgres;
+
+--
+-- TOC entry 2948 (class 0 OID 18080)
+-- Dependencies: 206
+-- Data for Name: ProductBrandHistory; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."ProductBrandHistory" (id, "brandId", "assignedAt", amount) FROM stdin;
+6bf43495-4b77-44b8-ae16-afbe219d3927	c342dec4-4093-4e91-9e65-a9b617411839	2022-02-26 00:00:00	5
+5ac0ff67-7544-4a67-b9cb-5adfc863e729	c342dec4-4093-4e91-9e65-a9b617411839	2022-06-26 00:00:00	5
+eca03578-7f7e-4d74-b45a-74bc1bff9059	c342dec4-4093-4e91-9e65-a9b617411839	2022-03-26 00:00:00	5
+765c2adc-07d8-4f85-9330-a727f7021cbc	c342dec4-4093-4e91-9e65-a9b617411839	2022-05-26 00:00:00	5
+31b2745d-a08a-4d4a-a598-a6ddb573fa03	c342dec4-4093-4e91-9e65-a9b617411839	2022-04-26 00:00:00	5
+762a51ea-09cb-4fd9-8a95-5d1a6bf98c8b	c342dec4-4093-4e91-9e65-a9b617411839	2022-01-26 00:00:00	5
+80f84ca9-c7b3-4582-b8be-983435ab2786	af2374ec-71a6-4b65-9566-db42c20a8bea	2022-03-26 00:00:00	5
+4fced801-ccdb-4a13-996a-f7a1adb1a971	af2374ec-71a6-4b65-9566-db42c20a8bea	2022-04-26 00:00:00	7
+97a64813-97b7-4add-97e2-b244945646cc	af2374ec-71a6-4b65-9566-db42c20a8bea	2022-01-26 00:00:00	0
+5c7d1b9a-f81b-4f76-878a-6bf1d3cdb22a	af2374ec-71a6-4b65-9566-db42c20a8bea	2022-02-26 00:00:00	2
+a1ebfdef-3cf4-4c9c-b0dc-cbaa96040e9c	2d39ec1c-1c6f-44a6-8a66-1b611f7804e6	2022-04-26 00:00:00	5
+93edd4fe-5c3d-4557-b45a-206ea7c500e4	2d39ec1c-1c6f-44a6-8a66-1b611f7804e6	2022-03-26 00:00:00	0
+489d4254-128b-460d-8cb4-ce45b07e1906	2d39ec1c-1c6f-44a6-8a66-1b611f7804e6	2022-02-26 00:00:00	3
+895147d4-656d-4bab-aaf8-25b504608c5c	2d39ec1c-1c6f-44a6-8a66-1b611f7804e6	2022-01-26 00:00:00	6
+a7846067-d54e-43f5-880d-6714c0c463dd	070eaecf-a603-4680-9fd0-17e4d243b1d3	2022-04-26 00:00:00	5
+f9d74c6f-cba9-4e91-b1bb-eb971641b7be	070eaecf-a603-4680-9fd0-17e4d243b1d3	2022-03-26 00:00:00	6
+ad22ce69-8aab-4d19-850f-863633722a0d	070eaecf-a603-4680-9fd0-17e4d243b1d3	2022-02-26 00:00:00	3
+3adeb399-21b6-466b-a729-3fc8cc9c2fb1	070eaecf-a603-4680-9fd0-17e4d243b1d3	2022-01-26 00:00:00	2
+\.
+
+
+--
+-- TOC entry 2944 (class 0 OID 18041)
+-- Dependencies: 202
+-- Data for Name: _prisma_migrations; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public._prisma_migrations (id, checksum, finished_at, migration_name, logs, rolled_back_at, started_at, applied_steps_count) FROM stdin;
+2fc9450e-6e32-45fa-a57b-a75f820e66a8	970b02c8ae424b613f424710d9d8fe2695ad2bac5fa326373c1eb387cf72c32e	2022-04-26 09:02:58.422431+00	20220426090258_models_creation	\N	\N	2022-04-26 09:02:58.376643+00	1
+f9090124-7cef-415f-9612-4ceb7c5bee60	ed68574c1c4b3cea76efb18d5e537020c80247de266a141f0d4bdf8b5a97339c	2022-04-26 10:22:33.851369+00	20220426102233_update_models	\N	\N	2022-04-26 10:22:33.835859+00	1
+ba48c1af-4722-44f8-81eb-05c5603feecc	9181cc232b6908055306fcb5d507da8a273558ea3c8d4fb392b3963af06a684a	2022-04-26 11:21:27.45845+00	20220426112127_update_models	\N	\N	2022-04-26 11:21:27.44768+00	1
+\.
+
+
+--
+-- TOC entry 2947 (class 0 OID 18071)
+-- Dependencies: 205
+-- Data for Name: brands; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.brands (id, "createdAt", "updatedAt", name, description, "productId") FROM stdin;
+070eaecf-a603-4680-9fd0-17e4d243b1d3	2022-04-26 09:11:54.5	2022-04-26 09:11:54.501	farm1	\N	55f93ce4-f710-4326-ab65-34a90fbf3d7b
+c342dec4-4093-4e91-9e65-a9b617411839	2022-04-26 09:12:00.546	2022-04-26 09:12:00.547	farm2	\N	55f93ce4-f710-4326-ab65-34a90fbf3d7b
+af2374ec-71a6-4b65-9566-db42c20a8bea	2022-04-26 09:12:43.183	2022-04-26 09:12:43.184	big farm	\N	fec4c6ad-0328-40de-939a-4e2e9adae5c6
+2d39ec1c-1c6f-44a6-8a66-1b611f7804e6	2022-04-26 09:13:02.934	2022-04-26 09:13:02.934	my house	\N	fec4c6ad-0328-40de-939a-4e2e9adae5c6
+5dd433c1-edb3-4669-b4a1-08579f12e61f	2022-04-26 09:17:08.493	2022-04-26 09:17:08.494	SAMSUNG	\N	5ca0c2e1-8dc0-44d5-aa17-287f3c0a50a4
+0884f827-50dd-45fd-ae05-34781cd0d1e2	2022-04-26 09:17:20.211	2022-04-26 09:17:20.212	Sony	\N	5ca0c2e1-8dc0-44d5-aa17-287f3c0a50a4
+faddae69-f7b2-4f7e-911d-6f63500879c4	2022-04-26 09:17:47.823	2022-04-26 09:17:47.824	DELL	\N	e23d18fc-aa3b-48d4-bc99-9cd48fe9917c
+2715b49e-82f1-4c7c-85e3-bc410362d6dd	2022-04-26 09:17:52.418	2022-04-26 09:17:52.418	HP	\N	e23d18fc-aa3b-48d4-bc99-9cd48fe9917c
+8ac49d0c-d087-4e6f-97bc-23fbe168e944	2022-04-26 09:17:58.493	2022-04-26 09:17:58.494	COMPAQ	\N	e23d18fc-aa3b-48d4-bc99-9cd48fe9917c
+\.
+
+
+--
+-- TOC entry 2945 (class 0 OID 18053)
+-- Dependencies: 203
+-- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.categories (id, "createdAt", "updatedAt", name, description) FROM stdin;
+3639f038-1f07-4aa0-89c6-f40b122577f5	2022-04-26 09:08:08.289	2022-04-26 09:08:08.29	food	\N
+42139d5f-39d4-458f-99c8-d308ddcdacda	2022-04-26 09:08:15.772	2022-04-26 09:08:15.772	electronic	\N
+6b6c5c34-8b89-4449-992b-d46d7b15f37f	2022-04-26 09:08:21.518	2022-04-26 09:08:21.519	sport	\N
+627249f6-df52-40a5-98ea-d9396e6f1ac6	2022-04-26 09:08:30.586	2022-04-26 09:08:30.586	cloth	\N
+6e8989d3-45f1-4428-9659-b0295f22e014	2022-04-26 09:08:39.315	2022-04-26 09:08:39.316	accesories	\N
+\.
+
+
+--
+-- TOC entry 2946 (class 0 OID 18062)
+-- Dependencies: 204
+-- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.products (id, "createdAt", "updatedAt", name, description, "categoryId") FROM stdin;
+66e73777-d433-499c-920f-56c97f90f32e	2022-04-26 09:09:56.179	2022-04-26 09:09:56.179	cheese	\N	3639f038-1f07-4aa0-89c6-f40b122577f5
+80a954d0-1746-41ec-90c4-0678607f7ad7	2022-04-26 09:10:06.158	2022-04-26 09:10:06.158	eags	\N	3639f038-1f07-4aa0-89c6-f40b122577f5
+fec4c6ad-0328-40de-939a-4e2e9adae5c6	2022-04-26 09:10:17.839	2022-04-26 09:10:17.84	butter	\N	3639f038-1f07-4aa0-89c6-f40b122577f5
+6bcae604-bfa4-4b70-9135-1021580e6f10	2022-04-26 09:10:29.142	2022-04-26 09:10:29.142	chikend	\N	3639f038-1f07-4aa0-89c6-f40b122577f5
+55f93ce4-f710-4326-ab65-34a90fbf3d7b	2022-04-26 09:10:42.66	2022-04-26 09:10:42.66	potato	\N	3639f038-1f07-4aa0-89c6-f40b122577f5
+5ca0c2e1-8dc0-44d5-aa17-287f3c0a50a4	2022-04-26 09:15:08.242	2022-04-26 09:15:08.243	TV	\N	42139d5f-39d4-458f-99c8-d308ddcdacda
+56f22c5b-d493-4590-bd03-4750efb54dc8	2022-04-26 09:15:17.713	2022-04-26 09:15:17.714	Tablet	\N	42139d5f-39d4-458f-99c8-d308ddcdacda
+e23d18fc-aa3b-48d4-bc99-9cd48fe9917c	2022-04-26 09:15:24.469	2022-04-26 09:15:24.47	Laptop	\N	42139d5f-39d4-458f-99c8-d308ddcdacda
+\.
+
+
+--
+-- TOC entry 2814 (class 2606 OID 18088)
+-- Name: ProductBrandHistory ProductBrandHistory_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."ProductBrandHistory"
+    ADD CONSTRAINT "ProductBrandHistory_pkey" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2803 (class 2606 OID 18050)
+-- Name: _prisma_migrations _prisma_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public._prisma_migrations
+    ADD CONSTRAINT _prisma_migrations_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2812 (class 2606 OID 18079)
+-- Name: brands brands_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.brands
+    ADD CONSTRAINT brands_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2806 (class 2606 OID 18061)
+-- Name: categories categories_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.categories
+    ADD CONSTRAINT categories_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2809 (class 2606 OID 18070)
+-- Name: products products_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.products
+    ADD CONSTRAINT products_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2810 (class 1259 OID 18091)
+-- Name: brands_name_key; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX brands_name_key ON public.brands USING btree (name);
+
+
+--
+-- TOC entry 2804 (class 1259 OID 18089)
+-- Name: categories_name_key; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX categories_name_key ON public.categories USING btree (name);
+
+
+--
+-- TOC entry 2807 (class 1259 OID 18090)
+-- Name: products_name_key; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX products_name_key ON public.products USING btree (name);
+
+
+--
+-- TOC entry 2817 (class 2606 OID 18102)
+-- Name: ProductBrandHistory ProductBrandHistory_brandId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."ProductBrandHistory"
+    ADD CONSTRAINT "ProductBrandHistory_brandId_fkey" FOREIGN KEY ("brandId") REFERENCES public.brands(id) ON UPDATE CASCADE ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2816 (class 2606 OID 18097)
+-- Name: brands brands_productId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.brands
+    ADD CONSTRAINT "brands_productId_fkey" FOREIGN KEY ("productId") REFERENCES public.products(id) ON UPDATE CASCADE ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2815 (class 2606 OID 18092)
+-- Name: products products_categoryId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.products
+    ADD CONSTRAINT "products_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES public.categories(id) ON UPDATE CASCADE ON DELETE RESTRICT;
+
+
+-- Completed on 2022-04-27 05:08:31 EDT
+
+--
+-- PostgreSQL database dump complete
+--
+
